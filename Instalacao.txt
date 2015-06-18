@@ -1,18 +1,31 @@
-PASSO A PASSO PARA CONFIGURAR CONTAINER VIRTUAL DOCKER:
-1 - VERIFICAR A VERSÃO E INSTALAÇÃO DO PHP.
-2 - INSTALAÇÃO DO APACHE.
-	"apt-get install apache2"
-3 - GERAR UMA CHAVE SSH (https://help.github.com/articles/generating-ssh-keys/).
-4 - CLONAR O REPOSITÓRIO "TESTESBEHAT"
-5 - INSTALAR O COMPOSER GLOBALMENTE (http://askubuntu.com/questions/116960/global-installation-of-composer-manual)
-6 - INSTALAR PACOTES ESSENCIAIS: 
-	"apt-get install python-software-properties" 
-	"apt-get install software-properties-common"
-7 - INSTALAR A VERSÃO 5.4 DO PHP: (http://www.dev-metal.com/how-to-install-latest-php-5-4-x-on-ubuntu-12-04-lts-precise-pangolin/).
-8 - ATUALIZANDO DEPENDÊNCIAS DO COMPOSER: 
+PASSO A PASSO PARA CONFIGURAR AMBIENTE:
+
+1 - INSTALAÇÃO DO JAVA DEFAULT-JRE.
+	"apt-get install default-jre"
+2 - GERAR UMA CHAVE SSH (https://help.github.com/articles/generating-ssh-keys/).
+3 - CLONAR O REPOSITÓRIO "TESTESBEHAT"
+	"git clone git@github.com:diogoalves86/testesbehat.git"
+4 - INSTALAR O COMPOSER GLOBALMENTE (http://askubuntu.com/questions/116960/global-installation-of-composer-manual)
+
+	"curl -sS https://getcomposer.org/installer | php"
+	"sudo mv composer.phar /usr/local/bin/composer"
+		
+5 - ATUALIZANDO DEPENDÊNCIAS DO COMPOSER: 
 	"rm -R vendor/"
+	"composer clear-cache"
 	"composer install"
-9 - CONFIGURAR ARQUIVO DE CONFIGURAÇÃO DO PHP (PHP.INI) "/etc/php5/apache2/php.ini"
+
+6 - CONFIGURAR ARQUIVO DE CONFIGURAÇÃO DO PHP (PHP.INI) "/etc/php5/apache2/php.ini"
 	ACRESCENTAR ESTAS LINHAS AO ARQUIVO: 
 		"; XDebug special configuration for Behat
 		xdebug.max_nesting_level = 1000"
+
+
+
+EXCLUSIVO AO DOCKER:
+ - INSTALAÇÃO DO APACHE.
+	"apt-get install apache2"
+ - INSTALAR PACOTES ESSENCIAIS: 
+	"apt-get install python-software-properties" 
+	"apt-get install software-properties-common"
+ - INSTALAR A VERSÃO 5.4 DO PHP: (http://www.dev-metal.com/how-to-install-latest-php-5-4-x-on-ubuntu-12-04-lts-precise-pangolin/).
